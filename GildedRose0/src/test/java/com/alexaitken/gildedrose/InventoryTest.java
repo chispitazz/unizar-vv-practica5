@@ -10,6 +10,8 @@ import com.alexaitken.gildedrose.Item;
 
 public class InventoryTest {
 
+    public static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
+
     private Inventory createInventory(Item... items) {
         return new Inventory(items);
     }
@@ -80,7 +82,7 @@ public class InventoryTest {
 
     @Test
     public void should_lower_backstage_passes_to_zero_quality_once_concert_has_happened() {
-        Item backStagePass = new Item("Backstage passes to a TAFKAL80ETC concert", -1, 20);
+        Item backStagePass = new Item(BACKSTAGE_PASSES, -1, 20);
         Inventory inventory = createInventory(backStagePass);
         inventory.updateQuality();
         assertEquals(0, backStagePass.getQuality());
@@ -88,7 +90,7 @@ public class InventoryTest {
 
     @Test
     public void should_increase_backstage_passes_quality_by_1_when_the_concert_is_more_than_10_days_away() {
-        Item backStagePass = new Item("Backstage passes to a TAFKAL80ETC concert", 11, 20);
+        Item backStagePass = new Item(BACKSTAGE_PASSES, 11, 20);
         Inventory inventory = createInventory(backStagePass);
         inventory.updateQuality();
         assertEquals(21, backStagePass.getQuality());
@@ -96,7 +98,7 @@ public class InventoryTest {
 
     @Test
     public void should_increase_backstage_passes_quality_by_2_when_the_concert_is_10_days_or_less_away() {
-        Item backStagePass = new Item("Backstage passes to a TAFKAL80ETC concert", 10, 27);
+        Item backStagePass = new Item(BACKSTAGE_PASSES, 10, 27);
         Inventory inventory = createInventory(backStagePass);
         inventory.updateQuality();
         assertEquals(29, backStagePass.getQuality());
@@ -104,7 +106,7 @@ public class InventoryTest {
 
     @Test
     public void should_increase_backstage_passes_quality_by_3_when_the_concert_is_5_days_or_less_away() {
-        Item backStagePass = new Item("Backstage passes to a TAFKAL80ETC concert", 5, 44);
+        Item backStagePass = new Item(BACKSTAGE_PASSES, 5, 44);
         Inventory inventory = createInventory(backStagePass);
         inventory.updateQuality();
         assertEquals(47, backStagePass.getQuality());
@@ -112,13 +114,51 @@ public class InventoryTest {
 
     @Test
     public void should_not_increase_backstage_passes_above_a_quality_of_50() {
-        Item backStagePassMoreThan10DaysAway = new Item("Backstage passes to a TAFKAL80ETC concert", 15, 50);
-        Item backStagePass10DaysAway = new Item("Backstage passes to a TAFKAL80ETC concert", 10, 49);
-        Item backStagePass5DaysAway = new Item("Backstage passes to a TAFKAL80ETC concert", 5, 48);
+        Item backStagePassMoreThan10DaysAway = new Item(BACKSTAGE_PASSES, 15, 50);
+        Item backStagePass10DaysAway = new Item(BACKSTAGE_PASSES, 10, 49);
+        Item backStagePass5DaysAway = new Item(BACKSTAGE_PASSES, 5, 48);
         Inventory inventory = createInventory(backStagePassMoreThan10DaysAway, backStagePass10DaysAway, backStagePass5DaysAway);
         inventory.updateQuality();
         assertEquals(50, backStagePassMoreThan10DaysAway.getQuality());
         assertEquals(50, backStagePass10DaysAway.getQuality());
         assertEquals(50, backStagePass5DaysAway.getQuality());
+    }
+
+    @Test
+    public void should_not_increase_backstage_passes_above_a_quality_of_50_other_limit_cases() {
+        Item backStagePass10DaysAway50Quality = new Item(BACKSTAGE_PASSES, 10, 50);
+        Item backStagePass6DaysAway = new Item(BACKSTAGE_PASSES, 6, 25);
+        Item backStagePass6DaysAway49Quality = new Item(BACKSTAGE_PASSES, 6, 49);
+        Item backStagePass5DaysAway50Quality = new Item(BACKSTAGE_PASSES, 5, 48);
+        Item backStagePass5DaysAway49Quality = new Item(BACKSTAGE_PASSES, 5, 48);
+        Item backStagePass1DayAway = new Item(BACKSTAGE_PASSES, 1, 25);
+        Item backStagePass1DayAway50Quality = new Item(BACKSTAGE_PASSES, 1, 50);
+        Item backStagePass1DayAway49Quality = new Item(BACKSTAGE_PASSES, 1, 49);
+        Item backStagePass1DayAway48Quality = new Item(BACKSTAGE_PASSES, 1, 48);
+        Item backStagePass0DaysAway = new Item(BACKSTAGE_PASSES, 0, 25);
+        Item backStagePassNegativeDaysAway = new Item(BACKSTAGE_PASSES, -8, 0);
+        Inventory inventory = createInventory( backStagePass10DaysAway50Quality,
+                backStagePass6DaysAway,
+                backStagePass6DaysAway49Quality,
+                backStagePass5DaysAway50Quality,
+                backStagePass5DaysAway49Quality,
+                backStagePass1DayAway,
+                backStagePass1DayAway50Quality,
+                backStagePass1DayAway49Quality,
+                backStagePass1DayAway48Quality,
+                backStagePass0DaysAway,
+                backStagePassNegativeDaysAway);
+        inventory.updateQuality();
+        assertEquals(50, backStagePass10DaysAway50Quality.getQuality());
+        assertEquals(27, backStagePass6DaysAway.getQuality());
+        assertEquals(50, backStagePass6DaysAway49Quality.getQuality());
+        assertEquals(50, backStagePass5DaysAway50Quality.getQuality());
+        assertEquals(50, backStagePass5DaysAway49Quality.getQuality());
+        assertEquals(0, backStagePass0DaysAway.getQuality());
+        assertEquals(28, backStagePass1DayAway.getQuality());
+        assertEquals(50, backStagePass1DayAway48Quality.getQuality());
+        assertEquals(50, backStagePass1DayAway49Quality.getQuality());
+        assertEquals(50, backStagePass1DayAway50Quality.getQuality());
+        assertEquals(-9, backStagePassNegativeDaysAway.getSellIn());
     }
 }
