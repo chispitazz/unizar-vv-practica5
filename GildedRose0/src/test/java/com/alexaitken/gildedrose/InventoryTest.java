@@ -199,5 +199,12 @@ public class InventoryTest {
     }
 
 
+    @Test
+    public void coverage_100_percent() {
+        Item normalItem = new Item("Sulfuras, Hand of Ragnaros", -8, 1);
+        Inventory inventory = createInventory(normalItem);
+        inventory.updateQuality();
+        assertEquals(1, normalItem.getQuality());
+    }
 
 }
