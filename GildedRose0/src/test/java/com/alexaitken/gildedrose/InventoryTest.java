@@ -170,4 +170,34 @@ public class InventoryTest {
         assertEquals(50, backStagePass10DaysAway.getQuality());
         assertEquals(50, backStagePass5DaysAway.getQuality());
     }
+
+    @Test
+    public void sellin_negative_quality_lower_by_two() {
+        Item normalItem = new Item("+5 Dexterity Vest", 0, 25);
+        Inventory inventory = createInventory(normalItem);
+        inventory.updateQuality();
+        assertEquals(-1, normalItem.getSellIn());
+    }
+
+
+
+    @Test
+    public void should_lower_sellin_by_one_quality_never_changes() {
+        Item normalItem = new Item("+5 Dexterity Vest", -8, 0);
+        Inventory inventory = createInventory(normalItem);
+        inventory.updateQuality();
+        assertEquals(0, normalItem.getQuality());
+    }
+
+
+    @Test
+    public void should_lower_sellin_by_one_quality_lower_by_one() {
+        Item normalItem = new Item("+5 Dexterity Vest", -8, 1);
+        Inventory inventory = createInventory(normalItem);
+        inventory.updateQuality();
+        assertEquals(0, normalItem.getQuality());
+    }
+
+
+
 }
