@@ -91,7 +91,7 @@ public class InventoryTest {
 
     //P2
     @Test
-    public void should_decrease_the_sellin__of_aged_brie_below_50() {
+    public void should_decrease_the_sellin_of_aged_brie_below_50() {
         Item agedBrie = new Item("Aged Brie", -8, 25);
         Inventory inventory = createInventory(agedBrie);
         inventory.updateQuality();
@@ -100,7 +100,7 @@ public class InventoryTest {
 
     //P2b
     @Test
-    public void P2b() {
+    public void should_not_increase_the_quality_of_aged_brie_at_50() {
         Item agedBrie = new Item("Aged Brie", -8, 50);
         Inventory inventory = createInventory(agedBrie);
         inventory.updateQuality();
@@ -109,7 +109,7 @@ public class InventoryTest {
 
     //P2c
     @Test
-    public void P2c() {
+    public void should_not_increase_the_quality_of_aged_brie_over_50_2() {
         Item agedBrie = new Item("Aged Brie", -8, 49);
         Inventory inventory = createInventory(agedBrie);
         inventory.updateQuality();
@@ -118,7 +118,7 @@ public class InventoryTest {
 
     //P2c
     @Test
-    public void P2d() {
+    public void should_decrease_the_sellin_of_aged_brie_bellow_50() {
         Item agedBrie = new Item("Aged Brie", 0, 25);
         Inventory inventory = createInventory(agedBrie);
         inventory.updateQuality();
