@@ -24,7 +24,7 @@ public class InventoryTest {
         inventory.updateQuality();
         assertEquals(80, sulfuras.getQuality());
     }
-
+    //P3
     @Test
     public void should_never_changes_sellIn_of_Sulfuras() {
         Item sulfuras = new Item("Sulfuras, Hand of Ragnaros", 0, 80);
@@ -49,7 +49,7 @@ public class InventoryTest {
         inventory.updateQuality();
         assertEquals(19, normalItem.getQuality());
     }
-
+    //9b
     @Test
     public void should_not_lower_the_quality_below_zero() {
         Item normalItem = new Item("+5 Dexterity Vest", 10, 0);
@@ -174,43 +174,6 @@ public class InventoryTest {
     }
 
     @Test
-    public void sellin_negative_quality_lower_by_two() {
-        Item normalItem = new Item("+5 Dexterity Vest", 0, 25);
-        Inventory inventory = createInventory(normalItem);
-        inventory.updateQuality();
-        assertEquals(-1, normalItem.getSellIn());
-    }
-
-
-
-    @Test
-    public void should_lower_sellin_by_one_quality_never_changes() {
-        Item normalItem = new Item("+5 Dexterity Vest", -8, 0);
-        Inventory inventory = createInventory(normalItem);
-        inventory.updateQuality();
-        assertEquals(0, normalItem.getQuality());
-    }
-
-
-    @Test
-    public void should_lower_sellin_by_one_quality_lower_by_one() {
-        Item normalItem = new Item("+5 Dexterity Vest", -8, 1);
-        Inventory inventory = createInventory(normalItem);
-        inventory.updateQuality();
-        assertEquals(0, normalItem.getQuality());
-    }
-
-
-    @Test
-    public void coverage_100_percent() {
-        Item normalItem = new Item("Sulfuras, Hand of Ragnaros", -8, 1);
-        Inventory inventory = createInventory(normalItem);
-        inventory.updateQuality();
-        assertEquals(1, normalItem.getQuality());
-    }
-
-
-    @Test
     public void should_not_increase_backstage_passes_above_a_quality_of_50_other_limit_cases() {
         Item backStagePass10DaysAway50Quality = new Item(BACKSTAGE_PASSES, 10, 50);
         Item backStagePass6DaysAway = new Item(BACKSTAGE_PASSES, 6, 25);
@@ -246,5 +209,41 @@ public class InventoryTest {
         assertEquals(50, backStagePass1DayAway49Quality.getQuality());
         assertEquals(50, backStagePass1DayAway50Quality.getQuality());
         assertEquals(-9, backStagePassNegativeDaysAway.getSellIn());
+    }
+
+    @Test
+    public void sellin_negative_quality_lower_by_two() {
+        Item normalItem = new Item("+5 Dexterity Vest", 0, 25);
+        Inventory inventory = createInventory(normalItem);
+        inventory.updateQuality();
+        assertEquals(-1, normalItem.getSellIn());
+    }
+
+
+
+    @Test
+    public void should_lower_sellin_by_one_quality_never_changes() {
+        Item normalItem = new Item("+5 Dexterity Vest", -8, 0);
+        Inventory inventory = createInventory(normalItem);
+        inventory.updateQuality();
+        assertEquals(0, normalItem.getQuality());
+    }
+
+
+    @Test
+    public void should_lower_sellin_by_one_quality_lower_by_one() {
+        Item normalItem = new Item("+5 Dexterity Vest", -8, 1);
+        Inventory inventory = createInventory(normalItem);
+        inventory.updateQuality();
+        assertEquals(0, normalItem.getQuality());
+    }
+
+
+    @Test
+    public void coverage_100_percent() {
+        Item normalItem = new Item("Sulfuras, Hand of Ragnaros", -8, 1);
+        Inventory inventory = createInventory(normalItem);
+        inventory.updateQuality();
+        assertEquals(1, normalItem.getQuality());
     }
 }
