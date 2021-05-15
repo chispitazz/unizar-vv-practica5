@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.alexaitken.gildedrose;
 
 public class Item {
@@ -10,34 +7,33 @@ public class Item {
 
     private int quality;
 
-    public Item(String name, int sellIn, int quality) {
-        super();
+    public Item(final String name, final int sellIn, final int quality) {
         this.name = name;
         this.sellIn = sellIn;
         this.quality = quality;
     }
 
-    public String getName() {
-        return name;
+    public final String getName() {
+        return this.name;
     }
 
-    public void setName(String name) {
+    public final void setName(final String name) {
         this.name = name;
     }
 
-    public int getSellIn() {
-        return sellIn;
+    public final int getSellIn() {
+        return this.sellIn;
     }
 
-    public void setSellIn(int sellIn) {
+    public final void setSellIn(final int sellIn) {
         this.sellIn = sellIn;
     }
 
-    public int getQuality() {
-        return quality;
+    public final int getQuality() {
+        return this.quality;
     }
 
-    public void setQuality(int quality) {
+    public final void setQuality(final int quality) {
         this.quality = quality;
     }
 }

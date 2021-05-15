@@ -1,7 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="EntryPointsManager">
-    <entry_points version="2.0" />
+    <pattern value="com.alexaitken.gildedrose.InventoryTest" method="coverage_100_percent" />
+    <pattern value="com.alexaitken.gildedrose.InventoryTest" />
+    <pattern value="com.alexaitken.gildedrose.Item" />
+    <pattern value="com.alexaitken.gildedrose.InventoryTest" method="sellin_negative_quality_lower_by_two" />
+    <pattern value="com.alexaitken.gildedrose.Item" method="setName" />
+    <pattern value="com.alexaitken.gildedrose.InventoryTest" method="should_decrease_the_sellin_of_aged_brie_bellow_50" />
+    <pattern value="com.alexaitken.gildedrose.InventoryTest" method="should_decrease_the_sellin_of_aged_brie_below_50" />
+    <pattern value="com.alexaitken.gildedrose.InventoryTest" method="should_increase_backstage_passes_quality_by_1_when_the_concert_is_more_than_10_days_away" />
+    <pattern value="com.alexaitken.gildedrose.InventoryTest" method="should_increase_backstage_passes_quality_by_2_when_the_concert_is_10_days_or_less_away" />
+    <pattern value="com.alexaitken.gildedrose.InventoryTest" method="should_increase_backstage_passes_quality_by_3_when_the_concert_is_5_days_or_less_away" />
+    <pattern value="com.alexaitken.gildedrose.InventoryTest" method="should_increase_the_quality_of_aged_brie_as_it_gets_older" />
+    <pattern value="com.alexaitken.gildedrose.InventoryTest" method="should_increase_the_quality_of_aged_brie_below_50" />
+    <pattern value="com.alexaitken.gildedrose.InventoryTest" method="should_lower_backstage_passes_to_zero_quality_once_concert_has_happened" />
+    <pattern value="com.alexaitken.gildedrose.InventoryTest" method="should_lower_sellin_by_one_quality_lower_by_one" />
+    <pattern value="com.alexaitken.gildedrose.InventoryTest" method="should_lower_sellin_by_one_quality_never_changes" />
+    <pattern value="com.alexaitken.gildedrose.InventoryTest" method="should_lower_the_quality_by_one_for_normal_items" />
+    <pattern value="com.alexaitken.gildedrose.InventoryTest" method="should_lower_the_quality_twice_as_fast_once_the_sell_in_date_has_passed" />
+    <pattern value="com.alexaitken.gildedrose.InventoryTest" method="should_lower_the_sellIn_by_one_for_normal_items" />
+    <pattern value="com.alexaitken.gildedrose.InventoryTest" method="should_never_changes_quailty_of_Sulfuras" />
+    <pattern value="com.alexaitken.gildedrose.InventoryTest" method="should_never_changes_sellIn_of_Sulfuras" />
+    <pattern value="com.alexaitken.gildedrose.InventoryTest" method="should_not_increase_backstage_passes_above_a_quality_of_50" />
+    <pattern value="com.alexaitken.gildedrose.InventoryTest" method="should_not_increase_backstage_passes_above_a_quality_of_50_other_limit_cases" />
+    <pattern value="com.alexaitken.gildedrose.InventoryTest" method="should_not_increase_the_quality_of_aged_brie_at_50" />
+    <pattern value="com.alexaitken.gildedrose.InventoryTest" method="should_not_increase_the_quality_of_aged_brie_over_50" />
+    <pattern value="com.alexaitken.gildedrose.InventoryTest" method="should_not_increase_the_quality_of_aged_brie_over_50_2" />
+    <pattern value="com.alexaitken.gildedrose.InventoryTest" method="should_not_lower_the_quality_below_zero" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
