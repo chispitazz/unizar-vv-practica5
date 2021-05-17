@@ -24,7 +24,7 @@ public class Inventory {
 
                     if (items[i].getName() == "Backstage passes to a TAFKAL80ETC concert") {
                         if (items[i].getSellIn() < 11) {
-                            if (items[i].getQuality() <= 50) {
+                            if (items[i].getQuality() < 50) {
                                 items[i].setQuality(items[i].getQuality() + 1);
                             }
                         }
